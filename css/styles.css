@@ -4,15 +4,15 @@
 
 /* 1. Design tokens */
 :root {
-  --c-bg: #c0dbd2;
+  --c-bg: rgb(248, 248, 248);
   --c-surface: #171920;
   --c-surface-2: #1f222b;
   --c-line: #2c303b;
   --c-text: #050502;
   --c-muted: #a6abb8;
-  --c-accent: #c8ff3e;
+  --c-accent: #002baa;
   --c-accent-ink: #0e0f12;
-  --c-warm: #ff7a45;
+  --c-warm: #7682a0;
 
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-display: "Arial Black", "Helvetica Neue", Arial, sans-serif;
@@ -27,11 +27,134 @@
   box-sizing: border-box;
 }
 
-body{
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: 1.25rem;
-  line-height: 1.5rem;
-  color: var(--c-text);
-  background-color: var(--c-bg);
+header {
+  background: var(--c-surface);
+  color: #fff;
+  padding: 1rem;
+  gap: 1rem;
+  
+}
+h1{
+   text-align: center;
+    font-size: 2.5rem;
+    color: var(--c-accent);
+}
+.menu {
+    display: flex;
+    justify-content: center;   /* center the bar's items */
+    align-items: center;
+    background:var(--c-accent);          /* bar background */
+    border-radius: 6px;
+    list-style: none;           /* remove bullets */
+}
+
+
+
+.menu a {
+    display: block;
+    padding: 0.9rem 1.6rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    
+}
+
+.menu a:hover {
+    background: #aec4c1;       /* highlight on hover */
+}
+/* ==========================
+   Two sections side by side
+/* ==========================
+   Two sections side by side
+   ========================== */
+.classes-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;   /* two equal columns */
+    gap: 24px;
+    align-items: stretch;             /* both columns get the same height */
+    padding: 120px 40px 80px;         /* 120px top = space below the header */
+    background: #fff;
+}
+
+/* Each section: colored background, fills its column */
+.classes-row .classes {
+    background: #dfe8e3;
+    border-radius: 16px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.classes-row .container {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Section title */
+.classes-row .section-title {
+    font-size: 1.6rem;
+    margin: 0 0 24px;
+    text-align: center;
+    color: #111;
+}
+
+/* Cards stacked vertically, stretched to fill the column */
+.classes-row .classes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+}
+
+/* Card */
+.classes-row .card {
+    flex: 1;                          /* equal card heights in each column */
+    background: #f3ebe0;
+    color: #111;
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    text-align: left;
+}
+
+.classes-row .card h3 {
+    margin: 0 0 6px;
+    font-size: 1.1rem;
+}
+
+.classes-row .card p {
+    margin: 0 0 10px;
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+/* Details list: label and value on one line */
+.classes-row .card-details {
+    margin: 0;
+}
+
+.classes-row .card-details div {
+    display: flex;
+    gap: 6px;
+    padding: 4px 0;
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.classes-row .card-details dt {
+    font-weight: 700;
+}
+
+.classes-row .card-details dd {
+    margin: 0;
+}
+
+/* Mobile: sections go back under each other */
+@media (max-width: 768px) {
+    .classes-row {
+        grid-template-columns: 1fr;
+        padding: 120px 20px 60px;
+    }
 }
