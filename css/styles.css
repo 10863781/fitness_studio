@@ -5,7 +5,7 @@
 /* 1. Design tokens */
 :root {
   --c-bg: rgb(248, 248, 248);
-  --c-surface: #171920;
+  --c-surface: #d9cdd0;
   --c-surface-2: #1f222b;
   --c-line: #2c303b;
   --c-text: #050502;
@@ -40,7 +40,8 @@ h1{
     color: var(--c-accent);
 }
 .menu {
-    display: flex;
+    display: flex;          /* make the bar stick to the top */
+    position: sticky;        /* make the bar stick to the top */
     justify-content: center;   /* center the bar's items */
     align-items: center;
     background:var(--c-accent);          /* bar background */
