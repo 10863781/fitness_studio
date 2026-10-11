@@ -102,8 +102,34 @@ dt{
     padding:0.5rem 0;
     
 }
-
 .main{
-    background-image:
+    background-image: url('../images/fitness.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+ 
 }
 
+#membership{
+    background: var(--c-surface-2);
+    background-image: url('../images/last.jpg');
+     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 2rem;
+    text-align: center;
+}
+
+#contact{
+    background: var(--c-surface);
+    padding: 2rem;
+    text-align: center;
+}
+
+footer{
+    background: var(--c-surface);
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
