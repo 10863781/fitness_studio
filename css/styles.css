@@ -6,7 +6,7 @@
 :root {
   --c-bg: rgb(248, 248, 248);
   --c-surface: #d9cdd0;
-  --c-surface-2: #1f222b;
+  --c-surface-2: #99aff1;
   --c-line: #2c303b;
   --c-text: #050502;
   --c-muted: #a6abb8;
@@ -40,8 +40,7 @@ h1{
     color: var(--c-accent);
 }
 .menu {
-    display: flex;          /* make the bar stick to the top */
-    position: sticky;        /* make the bar stick to the top */
+    display: flex;          /* make the bar stick to the top */       /* make the bar stick to the top */
     justify-content: center;   /* center the bar's items */
     align-items: center;
     background:var(--c-accent);          /* bar background */
@@ -52,8 +51,8 @@ h1{
 
 
 .menu a {
-    display: block;
-    padding: 0.9rem 1.6rem;
+    display: inline;
+    padding: 0.9rem 1.2rem;
     color: #fff;
     text-decoration: none;
     font-weight: 600;
@@ -62,100 +61,37 @@ h1{
 }
 
 .menu a:hover {
-    background: #aec4c1;       /* highlight on hover */
+    background: #d3e2e0;       /* highlight on hover */
 }
-/* ==========================
-   Two sections side by side
-/* ==========================
-   Two sections side by side
-   ========================== */
-.classes-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;   /* two equal columns */
-    gap: 24px;
-    align-items: stretch;             /* both columns get the same height */
-    padding: 120px 40px 80px;         /* 120px top = space below the header */
-    background: #fff;
-}
-
-/* Each section: colored background, fills its column */
-.classes-row .classes {
-    background: #dfe8e3;
-    border-radius: 16px;
-    padding: 40px 30px;
-    display: flex;
-    flex-direction: column;
-}
-
-.classes-row .container {
-    width: 100%;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Section title */
-.classes-row .section-title {
-    font-size: 1.6rem;
-    margin: 0 0 24px;
+h2 {
+    color: var(--c-accent);
     text-align: center;
-    color: #111;
+    background: var(--c-surface);
+    padding: 0.5rem;
 }
 
-/* Cards stacked vertically, stretched to fill the column */
-.classes-row .classes-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    flex: 1;
+.classes-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+
+
+} 
+.card{
+    border:1px solid var(--c-accent);
+    border-radius: var(--radius);
+    padding:1rem;
+    margin:1rem;
+    background: var(--c-surface-2);
 }
 
-/* Card */
-.classes-row .card {
-    flex: 1;                          /* equal card heights in each column */
-    background: #f3ebe0;
-    color: #111;
-    border-radius: 12px;
-    padding: 1.2rem 1.4rem;
-    text-align: left;
+dt{
+    border-bottom:1px solid var(--c-accent);
+    padding:0.5rem 0;
+    
 }
 
-.classes-row .card h3 {
-    margin: 0 0 6px;
-    font-size: 1.1rem;
+.main{
+    background-image:
 }
 
-.classes-row .card p {
-    margin: 0 0 10px;
-    font-size: 0.9rem;
-    opacity: 0.85;
-}
-
-/* Details list: label and value on one line */
-.classes-row .card-details {
-    margin: 0;
-}
-
-.classes-row .card-details div {
-    display: flex;
-    gap: 6px;
-    padding: 4px 0;
-    font-size: 0.85rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.classes-row .card-details dt {
-    font-weight: 700;
-}
-
-.classes-row .card-details dd {
-    margin: 0;
-}
-
-/* Mobile: sections go back under each other */
-@media (max-width: 768px) {
-    .classes-row {
-        grid-template-columns: 1fr;
-        padding: 120px 20px 60px;
-    }
-}
