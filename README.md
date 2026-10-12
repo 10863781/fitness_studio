@@ -1,2 +1,2 @@
 # fitness_studio
-a fitness studio site implemented using html5 and css3.
+Milano Fitness Studio is a static front-end website built with plain HTML and CSS (no JavaScript frameworks). It presents the studio's class schedule, membership pricing, and contact information in a single scrollable page
