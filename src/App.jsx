@@ -1,5 +1,6 @@
 import Header from "./components/Header.jsx"
 import Hero from "./components/Hero.jsx"
+import ClassGrid from "./components/ClassGrid.jsx"
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <Header />
       <main>
         <Hero />
+        <ClassGrid />
       </main>
     </div>
   )
