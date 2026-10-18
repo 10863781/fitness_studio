@@ -1,7 +1,13 @@
-import { classes } from "../data/studio.js"
+import { useState } from "react"
+import { categories, classes } from "../data/studio.js"
 import ClassCard from "./ClassCard.jsx"
 
 function ClassGrid() {
+  const [category, setCategory] = useState("All")
+
+  const visibleClasses =
+    category === "All" ? classes : classes.filter((item) => item.category === category)
+
   return (
     <section
       id="classes"
@@ -13,8 +19,30 @@ function ClassGrid() {
             Classes
           </h2>
 
-          <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {classes.map((item) => (
+          <div className="mt-6 flex flex-wrap justify-center gap-2" role="group" aria-label="Filter classes">
+            {categories.map((name) => (
+              <button
+                key={name}
+                type="button"
+                onClick={() => setCategory(name)}
+                aria-pressed={category === name}
+                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                  category === name
+                    ? "bg-brand text-white"
+                    : "bg-white/90 text-brand hover:bg-surface-2"
+                }`}
+              >
+                {name}
+              </button>
+            ))}
+          </div>
+
+          <p className="mt-4 text-center text-sm text-white">
+            Showing {visibleClasses.length} of {classes.length} classes
+          </p>
+
+          <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {visibleClasses.map((item) => (
               <ClassCard key={item.id} item={item} />
             ))}
           </div>
