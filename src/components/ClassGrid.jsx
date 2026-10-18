@@ -4,6 +4,13 @@ import ClassCard from "./ClassCard.jsx"
 
 function ClassGrid() {
   const [category, setCategory] = useState("All")
+  const [spots, setSpots] = useState({})
+
+  function updateSpots(id, value) {
+    setSpots((prev) => ({ ...prev, [id]: value }))
+  }
+
+  const totalBooked = Object.values(spots).reduce((sum, n) => sum + n, 0)
 
   const visibleClasses =
     category === "All" ? classes : classes.filter((item) => item.category === category)
@@ -39,11 +46,17 @@ function ClassGrid() {
 
           <p className="mt-4 text-center text-sm text-white">
             Showing {visibleClasses.length} of {classes.length} classes
+            {totalBooked > 0 && ` · ${totalBooked} spot${totalBooked === 1 ? "" : "s"} selected`}
           </p>
 
           <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {visibleClasses.map((item) => (
-              <ClassCard key={item.id} item={item} />
+              <ClassCard
+                key={item.id}
+                item={item}
+                spots={spots[item.id] ?? 0}
+                onSpotsChange={(value) => updateSpots(item.id, value)}
+              />
             ))}
           </div>
         </div>
