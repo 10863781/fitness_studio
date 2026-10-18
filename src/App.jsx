@@ -1,9 +1,13 @@
 import Header from "./components/Header.jsx"
+import Hero from "./components/Hero.jsx"
 
 function App() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-surface text-ink">
+    <div className="min-h-screen overflow-x-clip bg-surface text-ink">
       <Header />
+      <main>
+        <Hero />
+      </main>
     </div>
   )
 }
