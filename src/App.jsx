@@ -1,6 +1,8 @@
 import Header from "./components/Header.jsx"
 import Hero from "./components/Hero.jsx"
 import ClassGrid from "./components/ClassGrid.jsx"
+import Membership from "./components/Membership.jsx"
+import Contact from "./components/Contact.jsx"
 
 function App() {
   return (
@@ -9,6 +11,8 @@ function App() {
       <main>
         <Hero />
         <ClassGrid />
+        <Membership />
+        <Contact />
       </main>
     </div>
   )
