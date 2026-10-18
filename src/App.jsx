@@ -3,6 +3,7 @@ import Hero from "./components/Hero.jsx"
 import ClassGrid from "./components/ClassGrid.jsx"
 import Membership from "./components/Membership.jsx"
 import Contact from "./components/Contact.jsx"
+import Footer from "./components/Footer.jsx"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Membership />
         <Contact />
       </main>
+      <Footer />
     </div>
   )
 }
