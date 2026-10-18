@@ -2,6 +2,7 @@ import Header from "./components/Header.jsx"
 import Hero from "./components/Hero.jsx"
 import ClassGrid from "./components/ClassGrid.jsx"
 import Membership from "./components/Membership.jsx"
+import Register from "./components/Register.jsx"
 import Contact from "./components/Contact.jsx"
 import Footer from "./components/Footer.jsx"
 
@@ -13,6 +14,7 @@ function App() {
         <Hero />
         <ClassGrid />
         <Membership />
+        <Register />
         <Contact />
       </main>
       <Footer />

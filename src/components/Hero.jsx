@@ -20,7 +20,7 @@ function Hero() {
             See classes
           </a>
           <a
-            href="#membership"
+            href="#register"
             className="w-full rounded-md border border-white px-6 py-3 font-semibold uppercase text-white transition hover:bg-white hover:text-brand sm:w-auto"
           >
             Join now
