@@ -1,3 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Brand colors carried over from the Assignment 1 styles.css */
+@theme {
+  --color-brand: #002baa;
+  --color-surface: #d9cdd0;
+  --color-surface-2: #99aff1;
+  --color-ink: #050502;
+  --font-display: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+}
