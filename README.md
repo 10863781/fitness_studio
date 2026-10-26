@@ -11,7 +11,7 @@ client/                 React + Vite + Tailwind frontend (what the visitor sees)
   src/lib/useApi.js     fetches JSON from our API with loading / error state
   src/lib/auth-client.js  Better Auth browser client (signUp, signIn, signOut, useSession)
   vite.config.js        dev proxy: /api -> http://localhost:3000
-  vercel.json           live proxy: /api -> the Railway server
+  vercel.json           live proxy: /api -> the deployed API (milano-fitness-api.vercel.app)
 
 server/                 Express API
   src/index.js          starts the server and mounts every route
@@ -23,6 +23,7 @@ server/                 Express API
   src/db/seed.js        copies seed-data.js into the database
   src/db/auth-migrate.js  creates Better Auth's tables
   .env.example          template for the secrets file (.env is never committed)
+  vercel.json           deploy region (Frankfurt, same as the database)
 ```
 
 ## How a request flows
@@ -87,22 +88,33 @@ deletes that session row, so the cookie stops working.
 
 ## Deploy
 
-**Backend on Railway**
+Live site: **https://milano-fitness.vercel.app**
+Live API: **https://milano-fitness-api.vercel.app/api/classes**
 
-1. New Project → Deploy from GitHub repo → pick this repo.
-2. Service Settings → **Root Directory** = `server`. Railway runs `npm install` and `npm start`.
-3. Variables: `DATABASE_URL` (Neon), `BETTER_AUTH_SECRET` (a new random string),
-   `BETTER_AUTH_URL` = your Vercel URL, e.g. `https://milano-fitness.vercel.app` (no trailing slash).
-4. Settings → Networking → **Generate Domain**. Check `https://<that-domain>/api/health`.
+Both parts are deployed on Vercel as two separate projects (Railway was the
+plan, but it wasn't accepting new sign-ups):
 
-**Frontend on Vercel**
+| Vercel project | Folder | What it runs |
+|----------------|--------|--------------|
+| `milano-fitness-api` | `server/` | The Express app. Vercel imports `export default app` from `src/index.js` and runs it as a serverless function in Frankfurt (`server/vercel.json`), next to the Neon database. |
+| `milano-fitness` | `client/` | `npm run build` (Vite) and serves the static files. `client/vercel.json` forwards `/api/...` to the API project. |
 
-1. In `client/vercel.json`, replace `YOUR-RAILWAY-APP.up.railway.app` with the Railway domain and push.
-2. New Project → import this repo → **Root Directory** = `client` (Vite is detected automatically).
-3. Deploy, then open the Vercel URL. If it isn't the one you put in `BETTER_AUTH_URL`, update that variable on Railway.
+**Environment variables** (set on the `milano-fitness-api` project, never in git):
+`DATABASE_URL` (Neon), `BETTER_AUTH_SECRET` (random string, different from the local one),
+`BETTER_AUTH_URL` = `https://milano-fitness.vercel.app`.
+
+**Redeploy after changes** (Vercel CLI, logged in with `vercel login`):
+
+```bash
+cd server && vercel deploy --prod   # API
+cd client && vercel deploy --prod   # website
+```
 
 The database tables only need creating once: running `npm run db:setup` locally
-with the Neon `DATABASE_URL` sets up the same database that Railway uses.
+with the Neon `DATABASE_URL` sets up the same database the live API uses.
+`.vercelignore` in each folder keeps `.env` files from being uploaded.
+
+## Naming note
 
 Our own tables use `snake_case` column names; Better Auth's tables use `camelCase`
 (its default). The API renames ours to camelCase (e.g. `start_time AS "startTime"`) so

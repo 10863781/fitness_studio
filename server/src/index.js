@@ -43,6 +43,12 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Something went wrong on the server" })
 })
 
-app.listen(port, () => {
-  console.log(`API listening on http://localhost:${port}`)
-})
+// On Vercel the platform runs the app for us (it imports the default export
+// below), so we only start our own server when running locally.
+if (!process.env.VERCEL) {
+  app.listen(port, () => {
+    console.log(`API listening on http://localhost:${port}`)
+  })
+}
+
+export default app
