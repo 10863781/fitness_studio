@@ -5,7 +5,7 @@ function Membership({ memberships, loading, error }) {
   return (
     <section
       id="membership"
-      className="scroll-mt-32 md:scroll-mt-20 bg-surface-2 bg-[url('/images/last.jpg')] bg-cover bg-center"
+      className="scroll-mt-44 md:scroll-mt-20 bg-surface-2 bg-[url('/images/last.jpg')] bg-cover bg-center"
     >
       <div className="bg-black/35 px-4 py-12 text-center sm:py-16">
         <div className="mx-auto max-w-6xl">

@@ -24,7 +24,7 @@ function ClassGrid() {
   return (
     <section
       id="classes"
-      className="scroll-mt-32 md:scroll-mt-20 bg-[url('/images/fitness.jpg')] bg-cover bg-center md:bg-fixed"
+      className="scroll-mt-44 md:scroll-mt-20 bg-[url('/images/fitness.jpg')] bg-cover bg-center md:bg-fixed"
     >
       <div className="bg-black/30 px-4 py-12 sm:py-16">
         <div className="mx-auto max-w-6xl">
