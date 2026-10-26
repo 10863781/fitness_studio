@@ -1,12 +1,12 @@
 import { useState } from "react"
-import { memberships } from "../data/studio.js"
+import { formatPrice } from "../lib/format.js"
 
 const emptyForm = {
   name: "",
   email: "",
   password: "",
   confirm: "",
-  plan: memberships[0].id,
+  plan: "monthly",
 }
 
 function validate(form) {
@@ -37,7 +37,7 @@ function Field({ id, label, error, children }) {
 const inputClass =
   "mt-1 w-full rounded-md border border-ink/20 bg-white px-3 py-2 outline-none focus:border-brand focus:ring-2 focus:ring-brand/30"
 
-function Register() {
+function Register({ memberships }) {
   const [form, setForm] = useState(emptyForm)
   const [errors, setErrors] = useState({})
   const [showPassword, setShowPassword] = useState(false)
@@ -152,7 +152,7 @@ function Register() {
               <select id="plan" name="plan" value={form.plan} onChange={handleChange} className={inputClass}>
                 {memberships.map((plan) => (
                   <option key={plan.id} value={plan.id}>
-                    {plan.name} – {plan.price}/{plan.period}
+                    {plan.name} – {formatPrice(plan.price)}/{plan.period}
                   </option>
                 ))}
               </select>

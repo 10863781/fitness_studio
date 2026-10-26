@@ -1,10 +1,16 @@
 import { useState } from "react"
-import { categories, classes } from "../data/studio.js"
+import { useApi } from "../lib/useApi.js"
 import ClassCard from "./ClassCard.jsx"
+import StatusMessage from "./StatusMessage.jsx"
 
 function ClassGrid() {
   const [category, setCategory] = useState("All")
   const [spots, setSpots] = useState({})
+  const { data, loading, error } = useApi("/api/classes")
+  const classes = data ?? []
+
+  // Build the filter buttons from whatever categories are in the database
+  const categories = ["All", ...new Set(classes.map((item) => item.category))]
 
   function updateSpots(id, value) {
     setSpots((prev) => ({ ...prev, [id]: value }))
@@ -43,6 +49,8 @@ function ClassGrid() {
               </button>
             ))}
           </div>
+
+          <StatusMessage loading={loading} error={error} what="classes" />
 
           <p className="mt-4 text-center text-sm text-white">
             Showing {visibleClasses.length} of {classes.length} classes

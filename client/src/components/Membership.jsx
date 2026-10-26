@@ -1,6 +1,7 @@
-import { memberships } from "../data/studio.js"
+import { formatPrice } from "../lib/format.js"
+import StatusMessage from "./StatusMessage.jsx"
 
-function Membership() {
+function Membership({ memberships, loading, error }) {
   return (
     <section
       id="membership"
@@ -17,6 +18,8 @@ function Membership() {
             unlimited access to our classes and facilities.
           </p>
 
+          <StatusMessage loading={loading} error={error} what="memberships" />
+
           <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
             {memberships.map((plan) => (
               <article
@@ -26,7 +29,7 @@ function Membership() {
                 <h3 className="text-xl font-bold">{plan.name}</h3>
                 <p className="mt-3 flex-1 text-sm text-white/85">{plan.blurb}</p>
                 <p className="mt-5">
-                  <span className="font-display text-3xl">{plan.price}</span>
+                  <span className="font-display text-3xl">{formatPrice(plan.price)}</span>
                   <span className="text-white/75"> / {plan.period}</span>
                 </p>
               </article>

@@ -1,3 +1,4 @@
+import { formatTime } from "../lib/format.js"
 import SpotStepper from "./SpotStepper.jsx"
 
 function ClassCard({ item, spots, onSpotsChange }) {
@@ -21,9 +22,9 @@ function ClassCard({ item, spots, onSpotsChange }) {
           <dt className="border-b border-surface-2/60 py-1.5 font-semibold">Trainer</dt>
           <dd className="border-b border-surface-2/60 py-1.5">{item.trainer}</dd>
           <dt className="border-b border-surface-2/60 py-1.5 font-semibold">Time</dt>
-          <dd className="border-b border-surface-2/60 py-1.5">{item.time}</dd>
+          <dd className="border-b border-surface-2/60 py-1.5">{formatTime(item.startTime)}</dd>
           <dt className="border-b border-surface-2/60 py-1.5 font-semibold">Duration</dt>
-          <dd className="border-b border-surface-2/60 py-1.5">{item.duration}</dd>
+          <dd className="border-b border-surface-2/60 py-1.5">{item.durationMinutes} minutes</dd>
         </dl>
         <div className="mt-auto pt-4">
           <SpotStepper
